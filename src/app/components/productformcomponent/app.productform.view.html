@@ -1,0 +1,90 @@
+<h1>The Product Form Component</h1>
+<table>
+    <tr>
+        <td>
+            <div class="container">
+                <form name="frmProduct">
+                    <div class="container">
+                        <div class="form-group">
+                            <label>Product Row Id</label>
+                            <input type="text" class="form-control" name="ProductRowId" [(ngModel)]="product.ProductRowId">
+                        </div>
+                        <div class="form-group">
+                            <label>Product Id</label>
+                            <input type="text" class="form-control" name="ProductId" [(ngModel)]="product.ProductId">
+                        </div>
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" class="form-control" name="ProductName" [(ngModel)]="product.ProductName">
+                        </div>
+                        <div class="form-group">
+                            <label>Category Name</label>
+                            <select class="form-control" name="CategoryName" [(ngModel)]="product.CategoryName">
+                <option *ngFor="let c of categories" value="{{c}}">{{c}}</option>
+              </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Manufacturer</label>
+                            <select class="form-control" name="Manufacturer" [(ngModel)]="product.Manufacturer">
+                <option *ngFor="let m of manufacturers" value="{{m}}">{{m}}</option>
+              </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" class="form-control" name="Description" [(ngModel)]="product.Description">
+                    </div>
+                    <div class="form-group">
+                        <label>Base Price</label>
+                        <input type="text" class="form-control" name="BasePrice" [(ngModel)]="product.BasePrice">
+                    </div>
+                    <div class="form-group">
+                        <input type="button" value="Clear" (click)="clear()" class="btn btn-warning">
+                        <input type="button" value="Save" (click)="save()" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+        </td>
+        <td>
+            <div class="container">
+                <h2>List of Products</h2>
+                <!--Hard Coding-->
+                <!-- <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ProductRowId</th>
+                            <th>ProductId</th>
+                            <th>ProductName</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let prd of products">
+                            <td>{{prd.ProductRowId}}</td>
+                            <td>{{prd.ProductId}}</td>
+                            <td>{{prd.ProductName}}</td>
+                        </tr>
+                    </tbody>
+                </table> -->
+                <!--Dynamic Table Generation-->
+                <!-- <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th *ngFor="let h of columnHeaders">{{h}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let prd of products" (click)="getSelectedProduct(prd)">
+                            <td *ngFor="let h of columnHeaders">{{prd[h]}}</td>
+                        </tr>
+                    </tbody>
+                </table> -->
+                <h3>Dynamic Table</h3>
+                <app-tabledirective-component [DataSource]="products" (notify)="getSelectedProduct($event)">
+                </app-tabledirective-component>
+                <hr>
+                <app-tabledirective-component [DataSource]="emps" (notify)="getSelectedProduct($event)">
+                </app-tabledirective-component>
+            </div>
+        </td>
+    </tr>
+</table>

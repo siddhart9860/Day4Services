@@ -1,0 +1,65 @@
+<h1>The Product Reactive Form Component</h1>
+<table>
+    <tr>
+        <td>
+            <div class="container">
+                <form name="frmProduct" [formGroup]="frmProduct" (ngSubmit)="save()">
+                    <div class="container">
+                        <div class="form-group">
+                            <label>Product Row Id</label>
+                            <input type="text" class="form-control" formControlName="ProductRowId" name="ProductRowId">
+                            <div class="alert alert-danger" *ngIf="frmProduct.controls.ProductRowId.dirty && !frmProduct.controls.ProductRowId.valid">
+                                <p *ngIf="frmProduct.controls.ProductRowId.errors.required">Product Row Id is required</p>
+                                <p *ngIf="frmProduct.controls.ProductRowId.errors.minlength">Product Row Id is min 2 dights</p>
+                                <p *ngIf="frmProduct.controls.ProductRowId.errors.maxlength">Product Row Id can be max 5 digits</p>
+                                <p *ngIf="frmProduct.controls.ProductRowId.errors.pattern">Product Row Id must be numeric</p>
+                                <p *ngIf="!frmProduct.controls.ProductRowId.errors.even">Product Id must be even</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Product Id</label>
+                            <input type="text" class="form-control" formControlName="ProductId" name="ProductId">
+                        </div>
+                        <div class="form-group">
+                            <label>Product Name</label>
+                            <input type="text" class="form-control" formControlName="ProductName" name="ProductName">
+                        </div>
+                        <div class="form-group">
+                            <label>Category Name</label>
+                            <select class="form-control" name="CategoryName" formControlName="CategoryName">
+                <option *ngFor="let c of categories" value="{{c}}">{{c}}</option>
+              </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Manufacturer</label>
+                            <select class="form-control" name="Manufacturer" formControlName="Manufacturer">
+                <option *ngFor="let m of manufacturers" value="{{m}}">{{m}}</option>
+              </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" class="form-control" formControlName="Description" name="Description">
+                    </div>
+                    <div class="form-group">
+                        <label>Base Price</label>
+                        <input type="text" class="form-control" formControlName="BasePrice" name="BasePrice">
+                    </div>
+                    <div class="form-group">
+                        <input type="button" value="Clear" (click)="clear()" class="btn btn-warning">
+                        <input type="submit" value="Save" [disabled]="!frmProduct.valid" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+        </td>
+        <td>
+            <div class="container">
+
+                <h3>Dynamic Table</h3>
+                <app-tabledirective-component [DataSource]="products" (notify)="getSelectedProduct($event)">
+                </app-tabledirective-component>
+
+            </div>
+        </td>
+    </tr>
+</table>

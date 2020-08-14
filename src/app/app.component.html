@@ -1,0 +1,39 @@
+<h1>The Angular Component!!!!!!</h1>
+<h2>{{message}}</h2>
+<div>
+    <strong>{{400+500}}</strong>
+</div>
+<hr>
+<input type="text" [value]="message">
+<br>
+<a [href]="url">WNH</a>
+
+<!--The JSOM's $event is default event args that will carry
+  an event target element's data-->
+<input type="button" value="Click Me" (click)="display($event)">
+<hr>
+<h3>The Two Way Binding</h3>
+<input type="text" [(ngModel)]="name">
+<br>
+<input type="text" [(ngModel)]="name">
+<br>
+<input type="text" [(ngModel)]="name">
+<br>
+<div>
+    <strong>{{name}}</strong>
+</div>
+<br>
+<hr>
+<h3>Using Simple Component</h3>
+<input type="button" (click)="show()" value="Show/Hide" />
+<div *ngIf="!isVisible">
+    <app-simple-component></app-simple-component>
+</div>
+<hr>
+<div>List of Characters</div>
+<div>
+    <strong>Selected Character is = {{selectedCharacter}}</strong>
+</div>
+<select [(ngModel)]="selectedCharacter">
+  <option *ngFor="let c of characters" value="{{c}}">{{c}}</option>
+</select>

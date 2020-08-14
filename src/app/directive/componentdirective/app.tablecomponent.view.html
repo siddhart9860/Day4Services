@@ -1,0 +1,12 @@
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th *ngFor="let h of headers">{{h}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let record of DataSource" (click)="rowClick(record)">
+            <td *ngFor="let h of headers">{{record[h]}}</td>
+        </tr>
+    </tbody>
+</table>
