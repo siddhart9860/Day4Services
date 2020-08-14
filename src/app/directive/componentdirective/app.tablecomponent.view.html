@@ -1,12 +1,19 @@
 <table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th *ngFor="let h of headers">{{h}}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let record of DataSource" (click)="rowClick(record)">
-            <td *ngFor="let h of headers">{{record[h]}}</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th *ngFor="let h of headers">{{h}}</th>
+      <th>Action Sid</th>
+    </tr>
+
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of DataSource" (click)="rowClick(record)">
+      <td *ngFor="let h of headers">{{record[h]}}</td>
+      <td>
+        <div>
+          <input type="button" class="btn btn-danger" value="Delete" (click)="rowDeleteClick(record)">
+        </div>
+      </td>
+    </tr>
+  </tbody>
 </table>

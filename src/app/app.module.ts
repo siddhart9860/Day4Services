@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {SimpleComponent} from './simplecomponent';
-import {ProductFormComponent} from './components/productformcomponent/app.productform.component';
+import { SimpleComponent } from './simplecomponent';
+import { ProductFormComponent } from './components/productformcomponent/app.productform.component';
 import { TableDirectiveComponent } from './directive/componentdirective/app.tablecomponent.directive';
 import { ProductReactiveFormComponent } from './components/productreactiveformcomponent/app.productreactiveform.component';
 import { CategorySenderComponent } from './components/multicomponents/app.categorysender.component';
@@ -37,6 +37,6 @@ import { ServiceComponent } from './components/servicecomponent/app.service.comp
     AppRoutingModule
   ],
   providers: [],
-  bootstrap: [ServiceComponent]
+  bootstrap: [ProductReactiveFormComponent]
 })
 export class AppModule { }
