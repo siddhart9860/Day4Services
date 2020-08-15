@@ -8,9 +8,23 @@ export class Logic {
   }
 
   getProducts(): Array<Product> {
-    this.products.push(new Product(1, 'Prd001', 'Laptop', 'Electronics', 'HP', 'Gaming', 120000));
-    this.products.push(new Product(2, 'Prd002', 'Iron', 'Electrical', 'Bajaj', 'Cotton Friendly', 3000));
-    this.products.push(new Product(3, 'Prd003', 'Biscuts', 'Food', 'Parle', 'Glucose', 10));
+    this.products.push(
+      new Product(1, 'Prd001', 'Laptop', 'Electronics', 'HP', 'Gaming', 120000)
+    );
+    this.products.push(
+      new Product(
+        2,
+        'Prd002',
+        'Iron',
+        'Electrical',
+        'Bajaj',
+        'Cotton Friendly',
+        3000
+      )
+    );
+    this.products.push(
+      new Product(3, 'Prd003', 'Biscuts', 'Food', 'Parle', 'Glucose', 10)
+    );
     return this.products;
   }
 
@@ -20,11 +34,13 @@ export class Logic {
   }
 
   deleteProduct(prd: Product): Array<Product> {
-    const index = this.products.findIndex(x => prd.ProductRowId === x.ProductRowId, 0);
+    const index = this.products.findIndex(
+      (x) => prd.ProductRowId === x.ProductRowId,
+      0
+    );
     if (index > -1) {
       this.products.splice(index, 1);
     }
     return this.products;
   }
 }
-

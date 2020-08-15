@@ -7,16 +7,15 @@ export class Product {
     public Manufacturer: string,
     public Description: string,
     public BasePrice: number
-  ){}
+  ) {}
 }
-
 
 export class ProductServiceModel {
   constructor(
     public productRowId: number,
     public productName: string,
-    public price: number ) {
-  }
+    public price: number
+  ) {}
 }
 
 export class Register {
@@ -24,18 +23,13 @@ export class Register {
     public Email: string,
     public Password: string,
     public ConfirmPassword: string
-  ){}
+  ) {}
 }
 
 export class Login {
-  constructor(
-    public UserName: string,
-    public Password: string
-  ){}
+  constructor(public UserName: string, public Password: string) {}
 }
 
 export class ResponseData {
-  constructor(
-    public message: string
-  ){}
+  constructor(public message: string) {}
 }

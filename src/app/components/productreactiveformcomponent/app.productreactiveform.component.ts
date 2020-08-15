@@ -9,7 +9,7 @@ import { SecureService } from 'src/app/services/app.secure.service';
 
 @Component({
   selector: 'app-productreactiveform-component',
-  templateUrl: './app.productreactiveform.view.html'
+  templateUrl: './app.productreactiveform.view.html',
 })
 // OnInit: Angular Component's lifecycle interface
 export class ProductReactiveFormComponent implements OnInit {
@@ -28,33 +28,32 @@ export class ProductReactiveFormComponent implements OnInit {
     this.logic = new Logic();
     this.columnHeaders = new Array<string>();
 
-
     // create an instance of FormGroup and bind Product Model to it
     // using FormControl class that accepts the Public property of Model class
     // formGroup instance will be bind with [formGroup] property of <form></form>
     // The key of FormControl will be bound with 'formControlName' of editable element
     this.frmProduct = new FormGroup({
-      ProductRowId: new FormControl(this.product.ProductRowId,
+      ProductRowId: new FormControl(
+        this.product.ProductRowId,
         Validators.compose([
           Validators.required,
           Validators.minLength(2),
           Validators.maxLength(5),
           Validators.pattern('[0-9]*'),
-          CustomValidator.CheckEven
-        ])),
+          CustomValidator.CheckEven,
+        ])
+      ),
       ProductId: new FormControl(this.product.ProductId),
       ProductName: new FormControl(this.product.ProductName),
       CategoryName: new FormControl(this.product.CategoryName),
       Manufacturer: new FormControl(this.product.Manufacturer),
       Description: new FormControl(this.product.Description),
-      BasePrice: new FormControl(this.product.BasePrice)
+      BasePrice: new FormControl(this.product.BasePrice),
     });
   }
 
   ngOnInit(): void {
-
     this.refreshData();
-
 
     // this.products = this.logic.getProducts();
     console.log(JSON.stringify(this.products));
@@ -62,17 +61,18 @@ export class ProductReactiveFormComponent implements OnInit {
     for (const p of Object.keys(this.product)) {
       this.columnHeaders.push(p);
     }
-
   }
 
   refreshData(): void {
-    this.productService.getData().subscribe((resp) => {
-      this.products = resp;
-      console.log(JSON.stringify(this.products));
-
-    }, (error) => {
-      console.log(`Error Occured ${error}`);
-    });
+    this.productService.getData().subscribe(
+      (resp) => {
+        this.products = resp;
+        console.log(JSON.stringify(this.products));
+      },
+      (error) => {
+        console.log(`Error Occured ${error}`);
+      }
+    );
   }
 
   clear(): void {
@@ -85,27 +85,30 @@ export class ProductReactiveFormComponent implements OnInit {
     this.product = this.frmProduct.value;
     // this.products = this.logic.addProduct(this.product);
 
-    if (this.products.findIndex(x => x.ProductRowId === this.product.ProductRowId) > -1) {
+    if (
+      this.products.findIndex(
+        (x) => x.ProductRowId === this.product.ProductRowId
+      ) > -1
+    ) {
       // update
-      this.productService.putData(this.product).subscribe((resp) => {
-        console.log(`Updated succesfully ${resp.ProductId}`);
-
-      }, (error) => {
-
-        console.log(`Updated succesfully ${error}`);
-      });
-
-    }
-    else {
+      this.productService.putData(this.product).subscribe(
+        (resp) => {
+          console.log(`Updated succesfully ${resp.ProductId}`);
+        },
+        (error) => {
+          console.log(`Updated succesfully ${error}`);
+        }
+      );
+    } else {
       // create
-      this.productService.postData(this.product).subscribe((resp) => {
-        console.log(`Created succesfully ${resp.ProductId}`);
-
-      }, (error) => {
-
-        console.log(`Created succesfully ${error}`);
-      });
-
+      this.productService.postData(this.product).subscribe(
+        (resp) => {
+          console.log(`Created succesfully ${resp.ProductId}`);
+        },
+        (error) => {
+          console.log(`Created succesfully ${error}`);
+        }
+      );
     }
     this.refreshData();
   }
@@ -121,14 +124,14 @@ export class ProductReactiveFormComponent implements OnInit {
   }
 
   deleteData(prd: Product): void {
-    this.productService.deleteData(prd.ProductRowId).subscribe((resp) => {
-
-      console.log(`Deleted succesfully ${resp.ProductId}`);
-      this.refreshData();
-
-    }, (error) => {
-      console.log(`Deleted unsuccesfully ${error}`);
-    }
+    this.productService.deleteData(prd.ProductRowId).subscribe(
+      (resp) => {
+        console.log(`Deleted succesfully ${resp.ProductId}`);
+        this.refreshData();
+      },
+      (error) => {
+        console.log(`Deleted unsuccesfully ${error}`);
+      }
     );
   }
 }

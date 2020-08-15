@@ -2,9 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tabledirective-component',
-  templateUrl: './app.tablecomponent.view.html'
+  templateUrl: './app.tablecomponent.view.html',
 })
-
 export class TableDirectiveComponent implements OnInit {
   private dataSource: Array<any>;
   headers: Array<string>;
@@ -18,10 +17,9 @@ export class TableDirectiveComponent implements OnInit {
     this.headers = new Array<string>();
     this.notify = new EventEmitter<any>();
     this.deleteNotify = new EventEmitter<any>();
-
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
   // parent will be able to use datasourve property for
   // property binding

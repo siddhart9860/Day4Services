@@ -26,17 +26,23 @@ import { ServiceComponent } from './components/servicecomponent/app.service.comp
 // load and render in browser
 @NgModule({
   declarations: [
-    AppComponent, SimpleComponent, ProductFormComponent,
-    TableDirectiveComponent, ProductReactiveFormComponent,
-    CategorySenderComponent, ProductReceiverComponent,
-    ServiceComponent
+    AppComponent,
+    SimpleComponent,
+    ProductFormComponent,
+    TableDirectiveComponent,
+    ProductReactiveFormComponent,
+    CategorySenderComponent,
+    ProductReceiverComponent,
+    ServiceComponent,
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [ProductReactiveFormComponent]
+  bootstrap: [ProductReactiveFormComponent],
 })
-export class AppModule { }
+export class AppModule {}
